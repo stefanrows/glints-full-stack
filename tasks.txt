@@ -1,0 +1,11 @@
+Glints Task
+############
+
+Create full-stack app using React and Redux.
+
+Transfer raw data into database (https://gist.githubusercontent.com/seahyc/7ee4da8a3fb75a13739bdf5549172b1f/raw/f1c3084250b1cb263198e433ae36ba8d7a0d9ea9/hours.csv)
+
+Build user-facing webapp that allows user to filter for restaurants open by date time as well as restaurant name.
+
+User should be able to save restaurants into their own named collections (Vegetarian, Meat, so on)
+
