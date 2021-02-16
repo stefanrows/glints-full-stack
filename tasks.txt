@@ -17,7 +17,6 @@ Task 1 - Converting the CSV Data to JSON
 // For each item find all the days of the week
 // For each item find the start and end time
 // Combine each day with the start end time
-
 // Combine all days with time ranges
 
 
