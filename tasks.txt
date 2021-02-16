@@ -1,7 +1,7 @@
 Glints Task
 ############
 
-Create full-stack app using React and Redux.
+Create full-stack app using React and Redux
 
 Transfer raw data into database (https://gist.githubusercontent.com/seahyc/7ee4da8a3fb75a13739bdf5549172b1f/raw/f1c3084250b1cb263198e433ae36ba8d7a0d9ea9/hours.csv)
 
@@ -9,3 +9,48 @@ Build user-facing webapp that allows user to filter for restaurants open by date
 
 User should be able to save restaurants into their own named collections (Vegetarian, Meat, so on)
 
+
+Task 1 - Converting the CSV Data to JSON
+++++++++++++++++++++++++++++++++++++++++
+
+// Split the first thing I need to deal with -> between '/'
+// For each item find all the days of the week
+// For each item find the start and end time
+// Combine each day with the start end time
+
+// Combine all days with time ranges
+
+
+Tasks Day 2 
++++++++++++++++++++++++++++++++++++++++++
+1. Convert data.days to an object with days as keys. First element in current days array are the days. Second element is the time. Convert data.days[0] to keys in object
+2. Convert time either with Regex or in Frontend
+3. Create simple frontend layout
+4. Use sample / mock data to display restaurants on frontend
+5. Create search bar to filter through mock data & render results
+6. Filter for times 
+
+Create simple react app -> Create div card to display restaurant data -> how to render a list of components from fetched data / objects
+
+
+
+Database Schema
+###############
+
+const data = [{
+      restaurant: 'name',
+      days: {
+        monday: {
+          opening: '11am',
+          closing: '4pm',
+        },
+        tuesday: { opening: '11am', closing: '4pm' },
+        wednesday: { opening: '11am', closing: '4pm' },
+        thursday: { opening: '11am', closing: '4pm' },
+        friday: { opening: '11am', closing: '4pm' },
+        saturday: { opening: '11am', closing: '4pm' },
+        sunday: { opening: '11am', closing: '4pm' },
+      },
+    }, {
+        ...
+    }];
