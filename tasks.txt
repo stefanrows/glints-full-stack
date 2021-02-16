@@ -32,6 +32,13 @@ Tasks Day 2
 Create simple react app -> Create div card to display restaurant data -> how to render a list of components from fetched data / objects
 
 
+Tasks Day 3
++++++++++++++++++++++++++++++++++++++++++
+0. Format the Data as below
+1. Get the fucking data into the database
+
+
+
 
 Database Schema
 ###############
@@ -53,3 +60,32 @@ const data = [{
     }, {
         ...
     }];
+
+
+const data = [{
+  restaurantName: , 
+}]
+
+ // Database 
+
+{
+    "_id" : "Automatically",
+    "name" : "blah",
+    "hours_string" : "Monday-Friday 10:30am-9:30pm / Saturday-Sunday 10:00am-9:30pm"
+    "open_hours" : [ 
+        {
+            "day" : "mon",
+            "open" : 0,
+            "close" : 2.25
+        }, 
+        {
+            "day" : "tues",
+            "open" : 8,
+            "close" : 17
+        }
+    ]
+}
+
+
+// Stuff to say
+I would have done a text index search in mongo but I didn't have enough time to configure it in atlas
