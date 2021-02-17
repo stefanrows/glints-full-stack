@@ -90,8 +90,10 @@ export const RestaurantCards = () => {
         <StyledInput type='submit' />
       </form>
       {/* ?????? */}
-      {searching && <h4>Fucking wait!!</h4>}
-      {searchComplete && <strong>{`Total Results found ${searchResults.length}`}</strong>}
+      {searching && <h4>Fetching results...</h4>}
+      {searchComplete && (
+        <strong>{`Total Results found ${searchResults.length}`}</strong>
+      )}
       {searchResults.map((result, index) => {
         console.log('hours', result.hours_string)
         return (
