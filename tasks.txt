@@ -89,3 +89,10 @@ const data = [{
 
 // Stuff to say
 I would have done a text index search in mongo but I didn't have enough time to configure it in atlas
+
+
+
+Tasks Day 3 - 
+########################
+1. Console.log all of the backend logic and comment it
+2. 
