@@ -19,13 +19,32 @@ const RestaurantDisplay = styled.div`
 `
 
 const StyledInput = styled.input`
-  width: 200px;
+  margin: 0 10px 0 10px;
   height: 30px;
-  font-size: clamp(1rem, 3.5vw, 1.25rem);
+  font-size: 1rem;
+`
+
+const StyledButton = styled.input`
+  margin: 0 10px 0 10px;
+  height: 30px;
+  width: 100px;
+  background-color: white;
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 5%;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-weight: bold;
+  &:hover {
+    color: white;
+    background-color: black;
+  }
 `
 
 export const RestaurantCards = () => {
-  // const [todos, setTodos] = useState(initialTodos)
   const [time, setTime] = useState('00:00')
   const [date, setDate] = useState(new Date().toISOString())
   const [searchResults, setSearchResults] = useState([])
@@ -38,29 +57,23 @@ export const RestaurantCards = () => {
     e.preventDefault()
     console.log('Submitting')
 
-    /*
-    const splitTime = time.split(':')
-    const hoursString = splitTime[0]
-    const minutesString = splitTime[1]
-    */
     //Destructuring
     const [hoursString, minutesString] = time.split(':')
     const hours = parseInt(hoursString, 10)
     const minutes = parseInt(minutesString, 10) / 60
     console.log(hoursString, minutesString)
-    // ?????
+
     const payload = {
       startTime: hours + minutes,
       date,
     }
-    // ????
+
     const requestPayload = {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(payload),
     }
 
-    // ????
     const response = await fetch('http://localhost:5000/', requestPayload)
     const data = await response.json()
     setSearchResults(data.data)
@@ -82,14 +95,13 @@ export const RestaurantCards = () => {
         <i className='far fa-clock'></i> Pick A Date and Time
       </PickerHeader>
       <form onSubmit={handleSubmit}>
-        {/* // I listen for changes to the input value // When there is a change I
+        {/*listen for changes to the input value // When there is a change,
         set state to the new value // my input value is this updated state //
         using controlled inputs in React */}
         <StyledInput type='date' value={date} onChange={handleDateOnChange} />
         <StyledInput type='time' onChange={handleTimeOnChange} value={time} />
-        <StyledInput type='submit' />
+        <StyledButton type='submit' />
       </form>
-      {/* ?????? */}
       {searching && <h4>Fetching results...</h4>}
       {searchComplete && (
         <strong>{`Total Results found ${searchResults.length}`}</strong>
@@ -112,8 +124,3 @@ function Result(props) {
     </RestaurantDisplay>
   )
 }
-
-// 02:15 = 2.25
-// Split into hours and minutes
-// Convert minutes to decimals of hours
-// Add them together

@@ -35,7 +35,7 @@ Create simple react app -> Create div card to display restaurant data -> how to 
 Tasks Day 3
 +++++++++++++++++++++++++++++++++++++++++
 0. Format the Data as below
-1. Get the fucking data into the database
+1. Get the data into the database
 
 
 
@@ -43,30 +43,6 @@ Tasks Day 3
 Database Schema
 ###############
 
-const data = [{
-      restaurant: 'name',
-      days: {
-        monday: {
-          opening: '11am',
-          closing: '4pm',
-        },
-        tuesday: { opening: '11am', closing: '4pm' },
-        wednesday: { opening: '11am', closing: '4pm' },
-        thursday: { opening: '11am', closing: '4pm' },
-        friday: { opening: '11am', closing: '4pm' },
-        saturday: { opening: '11am', closing: '4pm' },
-        sunday: { opening: '11am', closing: '4pm' },
-      },
-    }, {
-        ...
-    }];
-
-
-const data = [{
-  restaurantName: , 
-}]
-
- // Database 
 
 {
     "_id" : "Automatically",
@@ -87,12 +63,8 @@ const data = [{
 }
 
 
-// Stuff to say
-I would have done a text index search in mongo but I didn't have enough time to configure it in atlas
-
 
 
 Tasks Day 3 - 
 ########################
 1. Console.log all of the backend logic and comment it
-2. 

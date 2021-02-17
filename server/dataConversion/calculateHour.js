@@ -1,7 +1,7 @@
  /*
-        11:15pm => 23.25
-        08:45am => 8.75
-        */
+  11:15pm => 23.25
+  08:45am => 8.75
+*/
 function calculateHour(timeString) {
   const amOrPM = timeString.slice(timeString.length - 2, timeString.length)
   const [hoursString, minutesString] = timeString

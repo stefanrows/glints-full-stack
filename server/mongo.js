@@ -15,15 +15,13 @@ async function getMongoCollection() {
 }
 
 async function closeClient() {
-    if(!client) return
-    
-    await client.close()
+  if (!client) return
+
+  await client.close()
 }
 module.exports = {
-    getMongoCollection,
-    async closeClient() {
-        await client.close()
-    }
+  getMongoCollection,
+  async closeClient() {
+    await client.close()
+  },
 }
-
-// mongo user: glints // pwd: qANK1dOffUBv3zto
