@@ -14,10 +14,6 @@ const PickerHeader = styled.h2`
   font-size: clamp(1.25rem, 3.5vw, 2rem);
 `
 
-const RestaurantDisplay = styled.div`
-  margin-top: 2rem;
-`
-
 const StyledInput = styled.input`
   margin: 0 10px 0 10px;
   height: 30px;
@@ -43,13 +39,24 @@ const StyledButton = styled.input`
     background-color: black;
   }
 `
+const RestaurantDisplay = styled.div`
+  margin-top: 2rem;
+  max-width: 75%;
+`
+
+const RestaurantName = styled.h3`
+  margin-bottom: 5px;
+  text-align: center;
+`
 
 export const RestaurantCards = () => {
+  // States
   const [time, setTime] = useState('00:00')
   const [date, setDate] = useState(new Date().toISOString())
   const [searchResults, setSearchResults] = useState([])
   const [searchComplete, setSearchComplete] = useState(false)
   const [searching, setSearching] = useState(false)
+  // Submit Handler
   async function handleSubmit(e) {
     setSearchComplete(false)
     setSearchResults([])
@@ -57,12 +64,12 @@ export const RestaurantCards = () => {
     e.preventDefault()
     console.log('Submitting')
 
-    //Destructuring
+    //Time conversion
     const [hoursString, minutesString] = time.split(':')
     const hours = parseInt(hoursString, 10)
+    //12.15 === 12.25
     const minutes = parseInt(minutesString, 10) / 60
-    console.log(hoursString, minutesString)
-
+    // Payload data that gets send to backend
     const payload = {
       startTime: hours + minutes,
       date,
@@ -73,8 +80,9 @@ export const RestaurantCards = () => {
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(payload),
     }
-
+    // Send Data to Backend and wait for it to come back
     const response = await fetch('http://localhost:5000/', requestPayload)
+    // Data comes back from backend as data
     const data = await response.json()
     setSearchResults(data.data)
     setSearchComplete(true)
@@ -106,8 +114,8 @@ export const RestaurantCards = () => {
       {searchComplete && (
         <strong>{`Total Results found ${searchResults.length}`}</strong>
       )}
+      {/* Render search results */}
       {searchResults.map((result, index) => {
-        console.log('hours', result.hours_string)
         return (
           <Result key={index} name={result.name} hours={result.hours_string} />
         )
@@ -116,10 +124,12 @@ export const RestaurantCards = () => {
   )
 }
 
+// Result component
+
 function Result(props) {
   return (
     <RestaurantDisplay>
-      <strong>{props.name} </strong>
+      <RestaurantName>{props.name} </RestaurantName>
       <p>{props.hours}</p>
     </RestaurantDisplay>
   )

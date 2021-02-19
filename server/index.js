@@ -17,24 +17,25 @@ function startServer(mongoCollection) {
   const app = express()
   app.use(cors())
   app.use(bodyParser.json())
-  // API Endpoint Test POST Route. POST request to http://localhost:5000/  logs request body in the console and returns the restaurant inside of data as a response.
+  // API Endpoint. POST request to http://localhost:5000/  logs request body in the console and returns the restaurant inside of data as a response.
   app.post('/', async function rootPostHandler(req, res) {
     console.log('data', req.body)
 
-    // ??
+    // Get date as dateString and startTime from request body from frontend
     const { date: dateString, startTime } = req.body
+    // Create new variable date from dateString
     const date = new Date(dateString)
-    console.log({ dateString, date, startTime })
+
+    // Search for results in MongoDB
     const dataResult = await mongoCollection
     .find({
       'open_hours.day':WEEK_DAYS[date.getDay()],
       'open_hours.open': { $lte:startTime },
-     // 'open_hours.close': { $gte: 23 },
+
     })
     .toArray()
-    // ??
-    console.log(WEEK_DAYS[date.getDay()], date.getHours())
 
+    // Send response as json object with data
     res.json({
       data:dataResult,
     })
